@@ -1,0 +1,34 @@
+📄 CV/Resume файл нэмэх заавар:
+================================
+
+1. Өөрийн CV PDF файлыг бэлтгэнэ үү
+2. Файлыг "cv.pdf" гэж нэрлэнэ үү
+3. Энэ зам руу хуулна уу: public/cv.pdf
+4. components/sections/Hero.tsx файл дээр товчийг идэвхжүүлнэ үү:
+
+Одоогийн байдал (идэвхгүй):
+```tsx
+<button
+  disabled
+  className="btn-secondary flex items-center gap-2 group/download opacity-50 cursor-not-allowed"
+  title="Удахгүй"
+>
+  Анкет татах (Удахгүй)
+  <Download size={20} />
+</button>
+```
+
+Солих (идэвхтэй):
+```tsx
+<a
+  href="/cv.pdf"
+  download="Ankhbayr_CV.pdf"
+  className="btn-secondary flex items-center gap-2 group/download"
+>
+  Анкет татах
+  <Download size={20} className="group-hover/download:animate-bounce" />
+</a>
+```
+
+CV бэлэн болсны дараа дээрх кодыг солино уу!
+

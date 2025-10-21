@@ -1,0 +1,186 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 40% 98%;
+    --foreground: 222.2 84% 4.9%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+  }
+
+  * {
+    @apply border-dark-border;
+  }
+
+  body {
+    @apply bg-dark text-white font-sans antialiased;
+  }
+
+  html:not(.dark) body {
+    @apply bg-gradient-to-b from-gray-50 to-white text-gray-900;
+  }
+
+  html:not(.dark) h1, html:not(.dark) h2, html:not(.dark) h3, html:not(.dark) h4 {
+    @apply text-gray-900;
+  }
+
+  html:not(.dark) p {
+    @apply text-gray-800;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .section {
+    @apply py-20 px-4 md:px-8 lg:px-16 relative;
+  }
+
+  .section::before {
+    content: '';
+    @apply absolute inset-0 -z-10 opacity-20 dark:opacity-20 opacity-10;
+    background: radial-gradient(circle at 50% 50%, rgba(0, 217, 255, 0.05) 0%, transparent 50%);
+  }
+
+  html:not(.dark) .section {
+    @apply bg-gradient-to-b from-white/80 to-gray-50/80;
+  }
+
+  .section-title {
+    @apply text-4xl md:text-5xl font-bold mb-12 text-center;
+    background: linear-gradient(to right, #00d9ff, #a855f7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  html:not(.dark) .section-title {
+    background: linear-gradient(to right, #0ea5e9, #8b5cf6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .card {
+    @apply bg-dark-lighter border border-dark-border rounded-xl p-6 
+           hover:border-neon-cyan transition-all duration-300
+           shadow-lg shadow-black/20;
+  }
+
+  html:not(.dark) .card {
+    @apply bg-white border-gray-200 hover:border-sky-500
+           shadow-lg shadow-gray-300/30;
+  }
+
+  .btn-primary {
+    @apply px-6 py-3 bg-gradient-to-r from-neon-cyan to-neon-purple text-white font-semibold rounded-lg 
+           hover:shadow-lg hover:shadow-neon-cyan/50 transition-all duration-300 transform hover:scale-105;
+  }
+
+  .btn-secondary {
+    @apply px-6 py-3 border-2 border-neon-cyan/50 text-neon-cyan font-semibold rounded-lg 
+           hover:bg-neon-cyan hover:text-white hover:border-neon-cyan
+           hover:shadow-lg hover:shadow-neon-cyan/50
+           transition-all duration-300 backdrop-blur-sm
+           relative overflow-hidden;
+  }
+
+  .btn-secondary::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-r from-neon-cyan/10 via-neon-purple/10 to-neon-cyan/10;
+    @apply opacity-0 hover:opacity-100 transition-opacity duration-300;
+    background-size: 200% 100%;
+    animation: shimmer 2s ease-in-out infinite;
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+
+  .glow-text {
+    text-shadow: 0 0 10px rgba(0, 217, 255, 0.5);
+  }
+
+  .tech-icon {
+    @apply w-12 h-12 transition-transform duration-300 hover:scale-110 hover:drop-shadow-[0_0_8px_rgba(0,217,255,0.8)];
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    background: linear-gradient(to right, #00d9ff, #a855f7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .animate-gradient {
+    background-size: 200% 200%;
+    animation: gradient 3s ease infinite;
+  }
+
+  @keyframes gradient {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  .animate-glow {
+    animation: glow-pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes glow-pulse {
+    0%, 100% {
+      box-shadow: 0 0 5px rgba(0, 217, 255, 0.3), 0 0 10px rgba(0, 217, 255, 0.2);
+    }
+    50% {
+      box-shadow: 0 0 10px rgba(0, 217, 255, 0.5), 0 0 20px rgba(0, 217, 255, 0.3), 0 0 30px rgba(0, 217, 255, 0.1);
+    }
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-dark;
+}
+
+html:not(.dark) ::-webkit-scrollbar-track {
+  @apply bg-gray-200;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #00d9ff, #a855f7);
+  border-radius: 5px;
+  @apply shadow-lg;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, #00d9ff, #ff0080);
+  @apply shadow-xl shadow-neon-cyan/50;
+}
+
+/* Selection */
+::selection {
+  background-color: rgba(0, 217, 255, 0.3);
+  color: #fff;
+}
+
