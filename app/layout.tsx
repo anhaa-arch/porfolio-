@@ -1,10 +1,10 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import Script from 'next/script'
 import './globals.css'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import StructuredData from '@/components/StructuredData'
-import ThemeScript from './theme-script'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -57,11 +57,24 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head>
-        <ThemeScript />
-        <StructuredData />
-      </head>
       <body className={inter.className}>
+        {/* Theme initialization script */}
+        <Script id="theme-init" strategy="beforeInteractive">
+          {`
+            (function() {
+              const theme = localStorage.getItem('theme');
+              if (theme === 'light') {
+                document.documentElement.classList.remove('dark');
+              } else {
+                document.documentElement.classList.add('dark');
+              }
+            })();
+          `}
+        </Script>
+        
+        {/* Structured Data */}
+        <StructuredData />
+        
         <div className="relative min-h-screen">
           {/* Animated background */}
           <div className="fixed inset-0 bg-gradient-to-b from-gray-50 to-white dark:bg-dark overflow-hidden pointer-events-none">
