@@ -100,7 +100,7 @@ export default function About() {
     <span className="font-semibold">React, Next.js</span> ашиглан UI тал дээр, 
     <span className="font-semibold">Node.js</span> ашиглан backend API болон үйлчилгээний тал дээр ажиллаж байсан туршлагатай.
     Одоогоор 
-    <span className="underline decoration-dotted font-semibold">"MalchinCamp"</span> 
+    <span className="underline decoration-dotted font-semibold">MalchinCamp</span> 
     нэртэй төсөл дээр хоёр хамтрагчтайгаа хамтран хөгжүүлж байна.
   </p>
 </div>
