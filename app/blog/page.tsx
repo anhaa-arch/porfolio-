@@ -66,9 +66,7 @@ export default function BlogPage() {
             <article key={post.id} className="card group hover:scale-[1.02] transition-transform">
               <div className="mb-4">
                 <h2 className="text-2xl font-bold text-white group-hover:text-neon-cyan transition-colors mb-2">
-                  <Link href={`/blog/${post.slug}`}>
-                    {post.title}
-                  </Link>
+                  {post.title}
                 </h2>
                 
                 <div className="flex items-center gap-4 text-sm text-gray-400">
