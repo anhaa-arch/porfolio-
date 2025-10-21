@@ -5,9 +5,6 @@ const nextConfig = {
     domains: ['github.com', 'avatars.githubusercontent.com'],
     formats: ['image/avif', 'image/webp'],
   },
-  experimental: {
-    optimizeCss: true,
-  },
 }
 
 module.exports = nextConfig
